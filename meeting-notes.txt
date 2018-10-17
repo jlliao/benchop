@@ -1,0 +1,6 @@
+Meeting Notes
+
+Date: 2018/10/17
+Identified tasks:
+- Run Table.m in octave environment and see if it is successful
+- Rewrite Table.m into python so that we can utilize libraries to connect SQL and frontend
