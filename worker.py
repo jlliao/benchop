@@ -17,8 +17,8 @@ class NotifierTask(Task):
 broker = 'amqp://{}:{}'.format(RABBITMQ_HOST, RABBITMQ_PORT)
 app = Celery(__name__, broker=broker)
 
-@app.task(base=NotifierTask)
-def run_benchmark(clientid=None):
+@app.task(base=NotifierTask, name='worker.run_benchmark')
+def run_benchmark(problem, clientid=None):
     """Run benchmark and return the result as a dictionary."""
     # import function run_methods from mytable.m
     filepaths, runtime, relerr = octave.run_methods(problem)
@@ -27,4 +27,4 @@ def run_benchmark(clientid=None):
     runtime_list = [item for sublist in runtime.tolist() for item in sublist]
     relerr_list = [item for sublist in relerr.tolist() for item in sublist]
     # merge those three lists into a dictionary { filepaths: (time, relerr) }
-    return dict(zip(filepaths, zip(runtime_list, relerr_list)))
+    return json.dumps(dict(zip(filepaths, zip(runtime_list, relerr_list))))

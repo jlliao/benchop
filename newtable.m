@@ -24,7 +24,7 @@ Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
 
 switch problem
 %% Problem 1 a) I
-    case 'a1'
+    case 1
         display('Problem 1 a) I');
         rootpath=pwd;
         S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
@@ -41,7 +41,7 @@ switch problem
         relerr = relerrBSeuCallUI';
 
 %% Problem 1 b) I
-    case 'b1'
+    case 2
         display('Problem 1 b) I');
         rootpath=pwd;
         S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
@@ -58,7 +58,7 @@ switch problem
         relerr = relerrBSamPutUII';
 
 %% Problem 1 c) I
-    case 'c1'
+    case 3
         display('Problem 1 c) I');
         rootpath=pwd;
         S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15; B=1.25*K;
@@ -75,7 +75,7 @@ switch problem
         relerr = relerrBSupoutCallI';
 
 %% Problem 1 a) II
-    case 'a2'
+    case 4
         display('Problem 1 a) II');
         rootpath=pwd;
         S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100;
@@ -92,7 +92,7 @@ switch problem
         relerr = relerrBSeuCallUII';
 
 %% Problem 1 b) II
-    case 'b2'
+    case 5
         display('Problem 1 b) II');
         rootpath=pwd;
         S=[97,98,99]; K=100; T=0.25; r=0.1; sig=0.01;
@@ -109,7 +109,7 @@ switch problem
         relerr = relerrBSamPutUII';
 
 %% Problem 1 c) II
-    case 'c2'
+    case 6
         display('Problem 1 c) II');
         rootpath=pwd;
         S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100; B=1.25*K;
