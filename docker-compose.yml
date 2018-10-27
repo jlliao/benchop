@@ -1,0 +1,41 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./flask-app
+      dockerfile: Dockerfile
+    ports:
+     - "8000:8000"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - redis
+  worker:
+    build:
+      context: ./flask-celery
+      dockerfile: Dockerfile
+    deploy:
+      mode: replicated
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - redis
+  monitor:
+    build:
+      context: ./flask-celery
+      dockerfile: Dockerfile
+    ports:
+     - "5555:5555"
+    entrypoint: celery
+    command:  flower -A tasks --port=5555 --broker=redis://redis:6379/0
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    depends_on:
+      - redis
+  redis:
+    image: redis

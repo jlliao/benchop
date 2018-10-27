@@ -1,0 +1,25 @@
+#cloud-config
+
+apt_update: true
+apt_upgrade: true
+packages:
+ - python-pip
+ - python-dev
+ - build-essential
+ - docker-ce
+byobu_default: system 
+
+runcmd:
+ - echo "export PATH=$PATH:/usr/games" >> /home/ubuntu/.bashrc  
+ - source /home/ubuntu/.bashrc
+ - sudo apt-get update
+ - sudo apt-get upgrade
+ - sudo apt-get install -y rabbitmq-server
+ - sudo locale-gen sv_SE.UTF-8
+ - sudo apt install -y python-pip
+ - sudo pip install celery
+ - sudo apt install -y python-celery-common
+ - sudo pip install flask
+ - sudo apt-get install -y octave
+ - sudo pip install oct2py
+ - git clone https://github.com/jlliao/benchop
