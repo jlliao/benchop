@@ -18,6 +18,5 @@ RUN pip install -r requirements.txt
 
 
 # run the worker
-ENTRYPOINT ['celery']
-CMD ['-A','tasks', 'worker', '--concurrency=3', '-n worker1@%h', '--loglevel=info']
-CMD ['-A','tasks', 'worker', '--concurrency=3', '-n worker2@%h', '--loglevel=info']
+ENTRYPOINT ["celery"]
+CMD ["-A","tasks", "worker", "--loglevel=info"]

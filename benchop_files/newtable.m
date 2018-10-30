@@ -7,7 +7,7 @@
 
 % create a function to choose between different problems
 % extrapolate filepath, time and relative error
-function [filepaths, runtime, relerr] = run_methods(problem)
+function [filepaths, runtime, relerr] = newtable(problem, K, T, r, sig)
 
 
 format long
@@ -27,7 +27,7 @@ switch problem
     case 1
         display('Problem 1 a) I');
         rootpath=pwd;
-        S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
+        S=[90,100,110]; % K=100; T=1.0; r=0.03; sig=0.15;
         U=[2.758443856146076 7.485087593912603 14.702019669720769];
 
         filepathsBSeuCallUI=getfilenames('./','BSeuCallUI_*.m');
@@ -44,7 +44,7 @@ switch problem
     case 2
         display('Problem 1 b) I');
         rootpath=pwd;
-        S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
+        S=[90,100,110]; % K=100; T=1.0; r=0.03; sig=0.15;
         U=[10.726486710094511 4.820608184813253 1.828207584020458];
 
         filepathsBSamPutUI=getfilenames('./','BSamPutUI_*.m');
@@ -61,7 +61,8 @@ switch problem
     case 3
         display('Problem 1 c) I');
         rootpath=pwd;
-        S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15; B=1.25*K;
+        S=[90,100,110]; % K=100; T=1.0; r=0.03; sig=0.15; 
+        B=1.25*K;
         U=[1.822512255945242 3.294086516281595 3.221591131246868];
 
         filepathsBSupoutCallI=getfilenames('./','BSupoutCallI_*.m');
@@ -78,7 +79,7 @@ switch problem
     case 4
         display('Problem 1 a) II');
         rootpath=pwd;
-        S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100;
+        S=[97,98,99]; % sig=0.01; r=0.1; T=0.25; K=100;
         U=[0.033913177006141   0.512978189232598   1.469203342553328];
 
         filepathsBSeuCallUII=getfilenames('./','BSeuCallUII_*.m');
@@ -95,7 +96,7 @@ switch problem
     case 5
         display('Problem 1 b) II');
         rootpath=pwd;
-        S=[97,98,99]; K=100; T=0.25; r=0.1; sig=0.01;
+        S=[97,98,99]; % K=100; T=0.25; r=0.1; sig=0.01;
         U=[3.000000000000682 2.000000000010786   1.000000000010715];
 
         filepathsBSamPutUII=getfilenames('./','BSamPutUII_*.m');
@@ -112,7 +113,8 @@ switch problem
     case 6
         display('Problem 1 c) II');
         rootpath=pwd;
-        S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100; B=1.25*K;
+        S=[97,98,99]; % sig=0.01; r=0.1; T=0.25; K=100; 
+        B=1.25*K;
         U=[0.033913177006134   0.512978189232598   1.469203342553328];
 
         filepathsBSupoutCallII=getfilenames('./','BSupoutCallII_*.m');

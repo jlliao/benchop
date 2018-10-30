@@ -3,220 +3,154 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Benchop</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css" />
+  <link rel="stylesheet" href="css/prettydoc.css" type="text/css" />
 </head>
 
 <body>
-  <div class="jumbotron">
+
+  <div class="jumbotron mb-0">
     <h1>Benchop</h1>
   </div>
+  </header>
 
-  <div class="container">
-    
-    <div class="accordion" id="accordionExample">
-      <div class="card">
-        <div class="card-header" id="headingOne">
-          <h5 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-              aria-controls="collapseOne">
-              Problem 1 a) I
-            </button>
-          </h5>
+  <div class="doc-wrapper">
+    <div class="container">
+      <div class="doc-body row">
+        <div class="doc-content col-md-9 col-12 order-1">
+          <div class="content-inner">
+            <section id="upload-method" class="doc-section">
+              <h2 class="section-title">Upload Method</h2>
+              <div class="section-block">
+                <p>Here you can upload you new benchmark method by clicking the button below.
+                </p>
+                <a href="https://themes.3rdwavemedia.com" class="btn btn-primary" target="_blank">
+                  Upload Method</a>
+              </div>
+            </section>
+            <!--//doc-section-->
+            <section id="run-benchmark" class="doc-section">
+              <h2 class="section-title">Run Benchmark</h2>
+              <div id="step1" class="section-block">
+                <h3 class="block-title">Step One: Select problems</h3>
+                <p>Choose problems you want to solve for benchmarking.
+                </p>
+                <form class="form-inline">
+                  <label class="my-1 mr-2" for="problems-selected">Choose</label>
+                  <select class="custom-select my-1 mr-sm-2" id="problems-selected" multiple="multiple">
+                    <option value=1>Problem 1 a) I</option>
+                    <option value=2>Problem 1 b) I</option>
+                    <option value=3>Problem 1 c) I</option>
+                    <option value=4>Problem 1 a) II</option>
+                    <option value=5>Problem 1 b) II</option>
+                    <option value=6>Problem 1 c) II</option>
+                  </select>
+
+                </form>
+              </div>
+              <!--//section-block-->
+              <div id="step2" class="section-block">
+                <h3 class="block-title">Step Two: Type Parameters</h3>
+                <p>Type the parameters you want to run benchmarking.</p>
+                <h6>For Problem 1 a) I, 1 b) I, 1 c) I</h6>
+                <form class="form-inline parameters_1">
+                  <label class="sr-only" for="K">K</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2" id="K1" placeholder="K (default:100)">
+
+                  <label class="sr-only" for="T">T</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2" id="T1" placeholder="T (default:1.0)">
+
+                  <label class="sr-only" for="r">r</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2" id="r1" placeholder="r (default:0.03)">
+
+                  <label class="sr-only" for="sig">sig</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2" id="sig1" placeholder="sig (default:0.15)">
+
+                </form>
+                <br>
+                <h6>For Problem 1 a) II, 1 b) II, 1 c) II (challenging cases)</h6>
+                <form class="form-inline parameters_2">
+                  <label class="sr-only" for="K">K</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2" id="K2" placeholder="K (default:100)">
+
+                  <label class="sr-only" for="T">T</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2" id="T2" placeholder="T (default:0.25)">
+
+                  <label class="sr-only" for="r">r</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2" id="r2" placeholder="r (default:0.1)">
+
+                  <label class="sr-only" for="sig">sig</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2" id="sig2" placeholder="sig (default:0.01)">
+
+                </form>
+              </div>
+              <!--//section-block-->
+              <div id="step3" class="section-block">
+                <h3 class="block-title">Step Three: Run Benchmark</h3>
+                <p>Check the result of benchmarking.</p>
+                <button type="submit" class="btn btn-primary" id="benchmark-button">Start Benchmarking</button>
+                <button type="submit" class="btn btn-primary" id="result-button">Check Result</button>
+                <div class="row">
+                  <p id="result"></p>
+                  <br>
+                  <canvas id="time-bar-1" height="100"></canvas>
+                  <canvas id="relerr-bar-1" height="100"></canvas>
+                  <canvas id="time-bar-2" height="100"></canvas>
+                  <canvas id="relerr-bar-2" height="100"></canvas>
+                  <canvas id="time-bar-3" height="100"></canvas>
+                  <canvas id="relerr-bar-3" height="100"></canvas>
+                  <canvas id="time-bar-4" height="100"></canvas>
+                  <canvas id="relerr-bar-4" height="100"></canvas>
+                  <canvas id="time-bar-5" height="100"></canvas>
+                  <canvas id="relerr-bar-5" height="100"></canvas>
+                  <canvas id="time-bar-6" height="100"></canvas>
+                  <canvas id="relerr-bar-6" height="100"></canvas>
+                </div>
+              </div>
+              <!--//section-block-->
+            </section>
+            <!--//doc-section-->
+          </div>
+          <!--//content-inner-->
         </div>
+        <!--//doc-content-->
+        <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+          <div id="doc-nav" class="doc-nav">
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <div class="card-body">
-            <form class="form-inline">
-              <label class="sr-only" for="K1">K</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="K1" placeholder="K">
+            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+              <a class="nav-link scrollto" href="#upload-method">Upload Method</a>
+              <a class="nav-link scrollto" href="#run-benchmark">Run Benchmark</a>
+              <nav class="doc-sub-menu nav flex-column">
+                <a class="nav-link scrollto" href="#step1">Select Problems</a>
+                <a class="nav-link scrollto" href="#step2">Type Parameters</a>
+                <a class="nav-link scrollto" href="#step3">Check Results</a>
+              </nav>
+              <!--//nav-->
+            </nav>
+            <!--//doc-menu-->
 
-              <label class="sr-only" for="T1">T</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="T1" placeholder="T">
-
-              <label class="sr-only" for="r1">r</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="r1" placeholder="r">
-
-              <label class="sr-only" for="sig1">sig</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="sig1" placeholder="sig">
-
-              <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </form>
-
-            <canvas id="time-bar-1" height="100"></canvas>
-            <canvas id="relerr-bar-1" height="100"></canvas>
           </div>
         </div>
+        <!--//doc-sidebar-->
       </div>
-      <div class="card">
-        <div class="card-header" id="headingTwo">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
-              aria-expanded="false" aria-controls="collapseTwo">
-              Problem 1 b) I
-            </button>
-          </h5>
-        </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-          <div class="card-body">
-            <form class="form-inline">
-              <label class="sr-only" for="K2">K</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="K2" placeholder="K">
-
-              <label class="sr-only" for="T2">T</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="T2" placeholder="T">
-
-              <label class="sr-only" for="r2">r</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="r2" placeholder="r">
-
-              <label class="sr-only" for="sig2">sig</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="sig2" placeholder="sig">
-
-              <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </form>
-
-            <canvas id="time-bar-2" height="100"></canvas>
-            <canvas id="relerr-bar-2" height="100"></canvas>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="headingThree">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
-              aria-expanded="false" aria-controls="collapseThree">
-              Problem 1 c) I
-            </button>
-          </h5>
-        </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-          <div class="card-body">
-            <form class="form-inline">
-              <label class="sr-only" for="K3">K</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="K3" placeholder="K">
-
-              <label class="sr-only" for="T3">T</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="T3" placeholder="T">
-
-              <label class="sr-only" for="r3">r</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="r3" placeholder="r">
-
-              <label class="sr-only" for="sig3">sig</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="sig3" placeholder="sig">
-
-              <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </form>
-
-            <canvas id="time-bar-3" height="100"></canvas>
-            <canvas id="relerr-bar-3" height="100"></canvas>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="headingFour">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour"
-              aria-expanded="false" aria-controls="collapseFour">
-              Problem 1 a) II
-            </button>
-          </h5>
-        </div>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-          <div class="card-body">
-            <form class="form-inline">
-              <label class="sr-only" for="K4">K</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="K4" placeholder="K">
-
-              <label class="sr-only" for="T4">T</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="T4" placeholder="T">
-
-              <label class="sr-only" for="r4">r</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="r4" placeholder="r">
-
-              <label class="sr-only" for="sig4">sig</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="sig4" placeholder="sig">
-
-              <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </form>
-
-            <canvas id="time-bar-4" height="100"></canvas>
-            <canvas id="relerr-bar-4" height="100"></canvas>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="headingFive">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive"
-              aria-expanded="false" aria-controls="collapseFive">
-              Problem 1 b) II
-            </button>
-          </h5>
-        </div>
-        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-          <div class="card-body">
-            <form class="form-inline">
-              <label class="sr-only" for="K5">K</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="K5" placeholder="K">
-
-              <label class="sr-only" for="T5">T</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="T5" placeholder="T">
-
-              <label class="sr-only" for="r5">r</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="r5" placeholder="r">
-
-              <label class="sr-only" for="sig5">sig</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="sig5" placeholder="sig">
-
-              <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </form>
-
-            <canvas id="time-bar-5" height="100"></canvas>
-            <canvas id="relerr-bar-5" height="100"></canvas>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="headingSix">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix"
-              aria-expanded="false" aria-controls="collapseSix">
-              Problem 1 c) II
-            </button>
-          </h5>
-        </div>
-        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-          <div class="card-body">
-            <form class="form-inline">
-              <label class="sr-only" for="K6">K</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="K6" placeholder="K">
-
-              <label class="sr-only" for="T6">T</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="T6" placeholder="T">
-
-              <label class="sr-only" for="r6">r</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="r6" placeholder="r">
-
-              <label class="sr-only" for="sig6">sig</label>
-              <input type="text" class="form-control mb-2 mr-sm-2" id="sig6" placeholder="sig">
-
-              <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </form>
-
-            <canvas id="time-bar-6" height="100"></canvas>
-            <canvas id="relerr-bar-6" height="100"></canvas>
-          </div>
-        </div>
-      </div>
+      <!--//doc-body-->
     </div>
-
+    <!--//container-->
   </div>
+  <!--//doc-wrapper-->
 
-  <script src="{{ notifier_url }}/socket.io/socket.io.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-  <script src="index.js"></script>
+  <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+  <script type="text/javascript" src="js/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="js/stickyfill.min.js"></script>
+  <script type="text/javascript" src="js/prettydoc.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
 
 </body>
 
