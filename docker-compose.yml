@@ -2,8 +2,8 @@ version: '3'
 services:
   web:
     build:
-      context: ./flask-app
-      dockerfile: Dockerfile
+      context: ./flask-celery
+      dockerfile: Dockerfile.server
     ports:
      - "8000:8000"
     deploy:
@@ -16,7 +16,7 @@ services:
   worker:
     build:
       context: ./flask-celery
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.worker
     deploy:
       mode: replicated
       replicas: 2

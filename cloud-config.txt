@@ -14,12 +14,6 @@ runcmd:
  - source /home/ubuntu/.bashrc
  - sudo apt-get update
  - sudo apt-get upgrade
- - sudo apt-get install -y rabbitmq-server
  - sudo locale-gen sv_SE.UTF-8
- - sudo apt install -y python-pip
- - sudo pip install celery
- - sudo apt install -y python-celery-common
- - sudo pip install flask
- - sudo apt-get install -y octave
- - sudo pip install oct2py
+ - sudo apt install -y python3-pip
  - git clone https://github.com/jlliao/benchop

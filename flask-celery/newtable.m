@@ -49,13 +49,13 @@ switch problem
 
         filepathsBSamPutUI=getfilenames('./','BSamPutUI_*.m');
         par={S,K,T,r,sig};
-        [timeBSamPutUI,relerrBSamPutUI] = executor(rootpath,filepathsBSamPutUI,U,par)
+        [timeBSamPutUI,relerrBSamPutUI] = executor(rootpath,filepathsBSamPutUI,U,par);
 
         cd(rootpath);
 
         filepaths = filepathsBSamPutUI';
         runtime = timeBSamPutUI';
-        relerr = relerrBSamPutUII';
+        relerr = relerrBSamPutUI';
 
 %% Problem 1 c) I
     case 3
@@ -67,7 +67,7 @@ switch problem
 
         filepathsBSupoutCallI=getfilenames('./','BSupoutCallI_*.m');
         par={S,K,T,r,sig,B};
-        [timeBSupoutCallI,relerrBSupoutCallI] = executor(rootpath,filepathsBSupoutCallI,U,par)
+        [timeBSupoutCallI,relerrBSupoutCallI] = executor(rootpath,filepathsBSupoutCallI,U,par);
 
         cd(rootpath);
 
@@ -84,7 +84,7 @@ switch problem
 
         filepathsBSeuCallUII=getfilenames('./','BSeuCallUII_*.m');
         par={S,K,T,r,sig};
-        [timeBSeuCallUII,relerrBSeuCallUII] = executor(rootpath,filepathsBSeuCallUII,U,par)
+        [timeBSeuCallUII,relerrBSeuCallUII] = executor(rootpath,filepathsBSeuCallUII,U,par);
 
         cd(rootpath);
 
@@ -101,7 +101,7 @@ switch problem
 
         filepathsBSamPutUII=getfilenames('./','BSamPutUII_*.m');
         par={S,K,T,r,sig};
-        [timeBSamPutUII,relerrBSamPutUII] = executor(rootpath,filepathsBSamPutUII,U,par)
+        [timeBSamPutUII,relerrBSamPutUII] = executor(rootpath,filepathsBSamPutUII,U,par);
 
         cd(rootpath);
 
@@ -119,7 +119,7 @@ switch problem
 
         filepathsBSupoutCallII=getfilenames('./','BSupoutCallII_*.m');
         par={S,K,T,r,sig,B};
-        [timeBSupoutCallII,relerrBSupoutCallII] = executor(rootpath,filepathsBSupoutCallII,U,par)
+        [timeBSupoutCallII,relerrBSupoutCallII] = executor(rootpath,filepathsBSupoutCallII,U,par);
 
         cd(rootpath);
     
